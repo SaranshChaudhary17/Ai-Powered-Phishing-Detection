@@ -1,6 +1,6 @@
 // When deploying to GitHub Pages, change this to your Hugging Face Space URL.
 // Example: const API_BASE_URL = "https://yourusername-yourspacename.hf.space";
-const API_BASE_URL = "";
+const API_BASE_URL = "https://saranshchaudhary17-phishing-detector.hf.space";
 
 const form = document.getElementById("scan-form");
 const urlInput = document.getElementById("url-input");
