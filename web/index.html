@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard AI</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Final Year Project</p>
+        <h1>Professional phishing URL detection powered by your trained model.</h1>
+        <p class="hero-text">
+          PhishGuard AI turns your machine learning model into a clean web experience for scanning suspicious URLs,
+          reviewing confidence, and understanding the exact signals behind every prediction.
+        </p>
+        <div class="hero-badges">
+          <span>Live model scoring</span>
+          <span>Feature transparency</span>
+          <span>Local private analysis</span>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="glass-card">
+          <h2>Project Snapshot</h2>
+          <ul>
+            <li>Model served from your local trained bundle</li>
+            <li>Professional UI for demos and viva presentations</li>
+            <li>Confidence and feature-level output in one place</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section class="scan-card">
+        <div class="section-heading">
+          <p class="section-label">URL Scanner</p>
+          <h2>Scan a URL with your phishing model</h2>
+        </div>
+
+        <form id="scan-form" class="scan-form">
+          <label for="url-input">Target URL</label>
+          <textarea id="url-input" name="url" rows="4" placeholder="Paste a suspicious or normal URL here..."></textarea>
+
+          <div class="controls">
+            <div class="threshold-control">
+              <label for="threshold-input">Decision threshold</label>
+              <input id="threshold-input" type="range" min="0.1" max="0.95" step="0.05" value="0.8">
+              <span id="threshold-value">0.80</span>
+            </div>
+            <div class="button-row">
+              <button type="submit" class="primary-btn">Analyze URL</button>
+              <button type="button" id="example-btn" class="secondary-btn">Load Example</button>
+            </div>
+          </div>
+        </form>
+
+        <p id="status-text" class="status-text">Ready to analyze.</p>
+      </section>
+
+      <section class="result-card">
+        <div class="section-heading">
+          <p class="section-label">Prediction Result</p>
+          <h2>Model verdict and confidence</h2>
+        </div>
+
+        <div id="result-empty" class="empty-state">
+          <p>No scan yet. Run a URL analysis to see the phishing probability, risk label, and feature breakdown.</p>
+        </div>
+
+        <div id="result-panel" class="result-panel hidden">
+          <div class="result-top">
+            <div>
+              <p class="mini-label">Prediction</p>
+              <h3 id="result-label">Good</h3>
+            </div>
+            <div class="pill" id="result-pill">Safe</div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-box">
+              <span>Phishing Risk</span>
+              <strong id="risk-value">0%</strong>
+            </div>
+            <div class="metric-box">
+              <span>Confidence</span>
+              <strong id="confidence-value">0%</strong>
+            </div>
+            <div class="metric-box">
+              <span>Threshold</span>
+              <strong id="threshold-display">0.50</strong>
+            </div>
+          </div>
+
+          <div class="bar-wrap">
+            <div class="bar-track">
+              <div id="risk-bar" class="bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="analysis-copy">
+            <p id="result-summary"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="feature-card">
+      <div class="section-heading">
+        <p class="section-label">Feature Breakdown</p>
+        <h2>Signals used by the model</h2>
+      </div>
+      <div id="feature-grid" class="feature-grid">
+        <div class="feature-placeholder">Feature values will appear here after a scan.</div>
+      </div>
+    </section>
+
+    <section class="info-band">
+      <div class="info-block">
+        <h3>How this helps your project</h3>
+        <p>
+          This website gives you a professional demo layer for your final-year project while preserving the same
+          trained model logic used in your Python scripts.
+        </p>
+      </div>
+      <div class="info-block">
+        <h3>Suggested viva flow</h3>
+        <p>
+          Show a safe URL, show a suspicious URL, explain the confidence values, and then point to the feature panel
+          to demonstrate how the model reasons about structure and phishing signals.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

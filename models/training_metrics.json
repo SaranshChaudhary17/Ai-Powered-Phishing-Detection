@@ -1,0 +1,63 @@
+{
+  "accuracy": 0.9090288522799672,
+  "roc_auc": 0.9717134742282003,
+  "classification_report": {
+    "good": {
+      "precision": 0.8942588462511208,
+      "recall": 0.9898581154164281,
+      "f1-score": 0.9396331483170361,
+      "support": 78585.0
+    },
+    "bad": {
+      "precision": 0.9651721726970809,
+      "recall": 0.7059932875179799,
+      "f1-score": 0.8154848714209234,
+      "support": 31285.0
+    },
+    "accuracy": 0.9090288522799672,
+    "macro avg": {
+      "precision": 0.9297155094741009,
+      "recall": 0.8479257014672039,
+      "f1-score": 0.8775590098689798,
+      "support": 109870.0
+    },
+    "weighted avg": {
+      "precision": 0.9144511045369302,
+      "recall": 0.9090288522799672,
+      "f1-score": 0.9042824716746871,
+      "support": 109870.0
+    }
+  },
+  "rows_used": 549346,
+  "feature_names": [
+    "url_length",
+    "hostname_length",
+    "path_length",
+    "query_length",
+    "num_dots",
+    "num_hyphens",
+    "num_slashes",
+    "num_digits",
+    "num_special_chars",
+    "has_at_symbol",
+    "uses_ip_address",
+    "subdomain_count",
+    "has_https",
+    "url_entropy",
+    "suspicious_keyword_hits",
+    "brand_misuse",
+    "has_port",
+    "num_query_params",
+    "has_fragment",
+    "hostname_token_count",
+    "path_segment_count",
+    "avg_token_length",
+    "max_token_length",
+    "has_www_prefix",
+    "query_has_suspicious_key",
+    "double_slash_path",
+    "path_has_file_extension"
+  ],
+  "default_threshold": 0.65,
+  "model_family": "expanded_numeric_features_random_forest"
+}

@@ -1,0 +1,16 @@
+__pycache__/
+.env
+.venv/
+env/
+venv/
+*.pyc
+*.pyo
+*.pyd
+
+# Since we will deploy frontend separately, we can still keep it in Git, 
+# but the model file might be too big for GitHub if it's over 100MB.
+# GitHub has a strict 100MB file limit. We MUST ignore the model if it's 534MB!
+models/phishing_url_model.joblib
+
+# Mac
+.DS_Store
