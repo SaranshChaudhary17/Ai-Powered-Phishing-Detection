@@ -1,3 +1,7 @@
+// When deploying to GitHub Pages, change this to your Hugging Face Space URL.
+// Example: const API_BASE_URL = "https://yourusername-yourspacename.hf.space";
+const API_BASE_URL = "";
+
 const form = document.getElementById("scan-form");
 const urlInput = document.getElementById("url-input");
 const thresholdInput = document.getElementById("threshold-input");
@@ -21,7 +25,7 @@ thresholdInput.addEventListener("input", () => {
 
 exampleBtn.addEventListener("click", async () => {
   statusText.textContent = "Loading example URL...";
-  const response = await fetch("/api/example");
+  const response = await fetch(`${API_BASE_URL}/api/example`);
   const data = await response.json();
   urlInput.value = data.url;
   thresholdInput.value = data.threshold.toFixed(2);
@@ -43,7 +47,7 @@ form.addEventListener("submit", async (event) => {
   statusText.textContent = "Analyzing URL with your model...";
 
   try {
-    const response = await fetch("/api/predict", {
+    const response = await fetch(`${API_BASE_URL}/api/predict`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
