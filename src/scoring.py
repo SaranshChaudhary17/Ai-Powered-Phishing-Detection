@@ -1,3 +1,4 @@
+import urllib.parse
 from pathlib import Path
 
 import pandas as pd
@@ -25,11 +26,50 @@ def build_model_input(url: str, bundle: dict):
     return combined, numeric_frame
 
 
+def is_whitelisted(url: str) -> bool:
+    try:
+        if not url.startswith(('http://', 'https://')):
+            parsed = urllib.parse.urlparse('http://' + url)
+        else:
+            parsed = urllib.parse.urlparse(url)
+        domain = parsed.netloc.lower()
+    except Exception:
+        domain = url.lower()
+        
+    common_domains = [
+        'youtube.com', 'google.com', 'amazon.com', 'amazon.in', 'google.co.in',
+        'facebook.com', 'twitter.com', 'instagram.com', 'linkedin.com',
+        'github.com', 'microsoft.com', 'apple.com', 'netflix.com',
+        'wikipedia.org', 'yahoo.com', 'reddit.com'
+    ]
+    for cd in common_domains:
+        if domain == cd or domain.endswith('.' + cd):
+            return True
+            
+    if 'gehu' in domain or 'geu' in domain:
+        return True
+        
+    return False
+
+
 def score_url(url: str, model_path: Path = DEFAULT_MODEL_PATH, threshold: float | None = None) -> dict:
-    bundle = load_bundle(model_path)
-    model = bundle["model"]
     default_threshold = DEFAULT_THRESHOLD
     threshold = default_threshold if threshold is None else float(threshold)
+
+    if is_whitelisted(url):
+        return {
+            "url": url,
+            "prediction": "good",
+            "threshold": threshold,
+            "probability_bad": 0.0,
+            "probability_good": 1.0,
+            "risk_percent": 0.0,
+            "confidence_percent": 100.0,
+            "features": {"whitelisted_domain": 1.0, "known_safe_site": 1.0},
+        }
+
+    bundle = load_bundle(model_path)
+    model = bundle["model"]
 
     model_input, numeric_frame = build_model_input(url, bundle)
     probability_bad = float(model.predict_proba(model_input)[0, 1])
